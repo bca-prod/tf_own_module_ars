@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "tfstate-ym-bucket" {
-  bucket = "tfstate-ym-bucket"
+  bucket = var.backend_s3_bucket_name
 }
 
 resource "aws_s3_bucket_ownership_controls" "tfstate-ym-bucket_ownership" {
@@ -34,7 +34,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "tfstate-ym-bucket
 
 resource "aws_dynamodb_table" "terraform_locks" {
   #   provider = aws.gritworks-master
-  name         = "terraform_locks"
+  name         = var.backend_dynamodb_table_name
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "LockID"
   attribute {

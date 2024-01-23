@@ -1,23 +1,12 @@
-variable "vpc_cidr" {
-  description = "CIDR block for VPC"
+# own remote-backend variables
+variable "backend_s3_bucket_name" {
+  description = "AWS S3 Bucket Name"
   type        = string
-  default     = "10.0.0.0/16"
+  default     = "tfstate-ym-bucket"
 }
 
-variable "azs" {
-  description = "Availablity zone for VPC"
-  type = list(string)
-  default = ["ap-southeast-1a","ap-southeast-1b","ap-southeast-1c"]
-}
-
-variable "public_subnets" {
-  description = "Public subnets for VPC"
-  type = list(string)
-  default = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
-}
-
-variable "private_subnets" {
-    description = "Private subnets for VPC"
-    type = list(string)
-    default = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]  
+variable "backend_dynamodb_table_name" {
+  description = "AWS DynamoDB Table Name"
+  type        = string
+  default     = "aws-dynamodb-backend-tfstate"
 }
